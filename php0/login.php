@@ -7,14 +7,14 @@
 	if ($pwd=='') {
 		exit('密码不能为空');
 	}
-	echo $username;
-	$link=mysql_connect("localhost","root","","thinksite");
+	echo $username, $pwd;
+	$link=mysqli_connect("localhost","root","","thinksite");
 	if ($link) {
-		mysql_query($link,"set names utf8")
+		//mysqli_query($link,"set names utf8");
 		//$pwd=md5($pwd);
-		$sql="select * from user where usernam='{$suername}' and pwd='{$pwd}'";
-		$re=mysql_query($link,$sql);
-		$data=mysql_fetch_assoc($re);
+		$sql="select * from user where usernam='{$username}' and pwd='{$pwd}'";
+		$re=mysqli_query($link,$sql);
+		$data=mysqli_fetch_assoc($re);
 		if ($data) {
 			echo $usernam."登录成功";
 		}else
