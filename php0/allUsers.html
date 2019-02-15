@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<head>
+    <meta charset="UTF-8">
+    <title>allUsers</title>
+</head>
+<body>
+	<button id="btn1">请求PHP接口-allUsers</button>
+	<br><br>
+	<h1>所有用户信息</h1>
+	<div id="users"></div>
+<script>
+    document.getElementById('btn1').addEventListener("click",getUsers);
+    function getUsers() {
+        var xhr=new XMLHttpRequest();
+       // console.log(xhr);
+        xhr.open('GET','users.php',true);
+
+        xhr.send();
+		
+		
+		xhr.onreadystatechange=function(){
+			if(this.status==200 && this.readyState==4)
+			{
+				console.log(this.responseText);
+				var users=JSON.parse(this.responseText);
+				console.log(users);
+				var output='';
+				for(var i in users)
+					{
+						output+=
+							'<ul>'+
+								'<li>'+users[i].id+'</li>'+
+								'<li>'+users[i].username+'</li>'+
+							'</ul>';											
+					}
+				document.getElementById("users").innerHTML=output;
+			
+		
+			}
+			else
+			{			
+				document.getElementById("text").innerHTML="网页不存在";
+			}
+		}			
+    }
+</script>
+
+</body>
+</html>
