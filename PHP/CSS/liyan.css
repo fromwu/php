@@ -1,3 +1,10 @@
-#a1{
+div{
+	font-size: 16px;
+}
+
+#a1 .aa1{
 color: blue;    
+}
+.a1 .aa1{
+	color: green;
 }
