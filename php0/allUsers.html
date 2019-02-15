@@ -9,19 +9,18 @@
 	<h1>所有用户信息</h1>
 	<div id="users"></div>
 <script>
+	//document.getElementById("text").innerHTML='';
     document.getElementById('btn1').addEventListener("click",getUsers);
     function getUsers() {
         var xhr=new XMLHttpRequest();
        // console.log(xhr);
         xhr.open('GET','users.php',true);
-
         xhr.send();
-		
-		
 		xhr.onreadystatechange=function(){
 			if(this.status==200 && this.readyState==4)
 			{
-				console.log(this.responseText);
+				//var users=this.responseText;
+				//console.log(this.responseText);
 				var users=JSON.parse(this.responseText);
 				console.log(users);
 				var output='';
@@ -34,8 +33,6 @@
 							'</ul>';											
 					}
 				document.getElementById("users").innerHTML=output;
-			
-		
 			}
 			else
 			{			

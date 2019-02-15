@@ -12,7 +12,8 @@
 	if ($link) {
 		mysqli_query($link,"set names utf8");
 		//$pwd=md5($pwd);
-		$sql="insert into user (username,pwd) values {$username}','{$pwd}'";
+		//$sql="insert into user (username,pwd) values {$username}','{$pwd}'";   //(错误 )
+		$sql="INSERT INTO user (username,pwd)VALUES ('$username', '$pwd')";
 		mysqli_query($link,$sql);
 		if (mysqli_affected_rows($link)==1) {
 			echo $username."成功";
